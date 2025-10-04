@@ -12,18 +12,28 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('templates', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->nullable();           // Nom du template
-            $table->string('slug')->unique()->nullable(); // URL friendly
-            $table->string('folder');                     // Nom du dossier où le template est stocké
-            $table->decimal('price', 10, 2)->default(0); // Prix du template
-            $table->boolean('is_paid')->default(false);  // Si le template est payant
-            $table->boolean('is_public')->default(true); // Si le template est visible publiquement
-            $table->string('screenshot')->nullable();    // Chemin vers screenshot
-            $table->string('preview_link')->nullable();  // Lien de prévisualisation
-            $table->foreignId('creator_id')->nullable()->constrained('users')->onDelete('set null'); // Créateur
-            $table->timestamps();
+            $table->bigIncrements('id');
+            $table->string('name')->nullable();
+            $table->string('slug')->unique()->nullable();
+            $table->string('folder');
+            $table->decimal('price', 10, 2)->default(0.00);
+            $table->boolean('is_paid')->default(false);
+            $table->boolean('is_public')->default(true);
+            $table->string('screenshot')->nullable();
+            $table->string('preview_link')->nullable();
+            $table->unsignedBigInteger('creator_id')->nullable();
+            $table->timestamps(); // created_at et updated_at
+            $table->longText('description')->nullable();
+            $table->integer('download')->default(0);
+
+            // clé étrangère
+            $table->foreign('creator_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
         });
+    
+
     }
 
     /**
