@@ -219,7 +219,6 @@ const handleRegister = async () => {
 
     localStorage.setItem('token', res.data.data.token)
     User.User=res.data.data.user
-    console.log(User)
     router.push('/ViewAdmin')
   } catch (err) {
     console.error(err)

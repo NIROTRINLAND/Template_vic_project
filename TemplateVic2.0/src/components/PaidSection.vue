@@ -172,7 +172,6 @@ const toggleTemplate = async (template) => {
 const fetchTemplates = async () => {
   try {
     const res = await apiClient.get("/indexPaidTemplateAdmin")
-    console.log(res)
     templates.value = res.data.FreeTemplate.map(t => ({
       id: t.id,
       name: t.name,

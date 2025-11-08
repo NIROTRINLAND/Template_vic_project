@@ -176,7 +176,6 @@ const addTemplate = async () => {
 
 const toggleTemplate = async (template) => {
   try {
-    console.log(template)
      const res = await apiClient.post("/ModifyVisibility",{template:template})
     // Exemple d'action asynchrone : attendre 1 seconde
    

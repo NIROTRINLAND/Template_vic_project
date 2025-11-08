@@ -111,11 +111,9 @@ function setRating(n) {
 
 async function ShowRating(){
 
-console.log(template)
 
      const res = await apiClient.post(`/ShowRating`, {template:template})
     notation.value=res.data.moyenne
-    console.log(res)
 }
 
 
@@ -126,7 +124,6 @@ async function submitRating() {
   loading.value = true
   message.value = ''
   error.value = ''
-console.log(rating.value)
   try {
     const res = await apiClient.post(`/Rating`, { rating: rating.value ,template:template})
 
@@ -173,8 +170,7 @@ onMounted(async () => {
       { template: template },
       
     )
-    console.log('Template:', TemplateStore.template)
-    console.log('Réponse blob:', res)
+   
     creator.value=res.data.creator;
   } catch (err) {
     console.error('Erreur ShowCreator:', err)

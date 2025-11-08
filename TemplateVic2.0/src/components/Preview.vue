@@ -10,9 +10,7 @@ const templateHtml = ref('')
 
 
 onMounted(() => {
- templateHtml.value=`http://localhost:8000/storage/templates/${TemplateStore.template.name}/index.html`
-  
-  console.log(TemplateStore.template)
+ templateHtml.value=`${ import.meta.env.VITE_API_URL2 }/storage/templates/${TemplateStore.template.name}/index.html`
 })
 </script>
 

@@ -61,7 +61,6 @@ const templates = ref([])
 const fetchTemplates = async () => {
   try {
     const res = await apiClient.get("/PaidTemplate") // GET vers ton endpoint
-    console.log("Réponse serveur :", res.data)
 
     // Remplir la liste de templates avec les données du backend
     templates.value = res.data.FreeTemplate.map(t => ({

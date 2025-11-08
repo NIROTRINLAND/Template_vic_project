@@ -102,7 +102,6 @@ const handleSubmit = async () => {
   errorMessage.value = ""
 
   try {
-    console.log('dkksks')
     const res = await apiClient.post("/ContactCreator", {
       name: form.name,
       email: form.email,

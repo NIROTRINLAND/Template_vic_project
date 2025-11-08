@@ -117,7 +117,6 @@ async function Allstats(){
     const res = await apiClient.get("/Stat")
    const res1 = await apiClient.get("/TemplateStat")
 
-    console.log(res.data)
     stats1.value.freeTemplates=res.data.FreeTemplateByDay
     stats1.value.paidTemplates=res.data.PaidTemplateByDay
      stats1.value.users=res.data.uniqueCreatorsToday
@@ -128,12 +127,12 @@ async function Allstats(){
      stats2.value.users=res1.data.user
  
   } catch (error) {
-    console.log(error)
     
   }
 }
 
 onMounted(() => {
  Allstats()
+
 })
 </script>
